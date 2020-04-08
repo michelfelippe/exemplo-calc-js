@@ -17,15 +17,15 @@
             <input type="number" id="segundoNumero">
         </div>
         <div>
-            <button onclick="somar()">+</button>
-            <button onclick="subtrair()">-</button>
-            <button onclick="multiplicar()">*</button>
-            <button onclick="dividir()">/</button>
-            <button onclick="raizquadrada()">Raiz Quadrada</button>
-            <button onclick="potencia()">X²</button>
-            <button onclick="raizcubica()">Raiz Cubica</button>
-            <button onclick="exponencial()">Exponencial</button>
-            <button onclick="logaritmo()">log</button>
+            <button onclick="execoperacao('somar')">Somar</button>
+            <button onclick="execoperacao('subtrair')">Subtrair</button>
+            <button onclick="execoperacao('multiplicar')">Multiplicar</button>
+            <button onclick="execoperacao('dividir')">Dividir</button>
+            <button onclick="execoperacao('raizquadrada')">Raiz Quadrada</button>
+            <button onclick="execoperacao('potencia')">Potencia</button>
+            <button onclick="execoperacao('raizcubica')">Raiz Cubica</button>
+            <button onclick="execoperacao('exponencial')">Exponencial</button>
+            <button onclick="execoperacao('logaritmo')">Logaritmo</button>
         </div>
         <div>
             <label for="resultado">Resultado</label>
@@ -33,64 +33,27 @@
         </div>
     </fieldset>
     <script>
-            function somar() {
+
+        function execoperacao(operacao){
             var n1 = +document.getElementById('primeiroNumero').value;
             var n2 = +document.getElementById('segundoNumero').value;
+
+            var resultoperacao;
+            switch (operacao) {
+                case 'somar': resultoperacao = n1 + n2; break;
+                case 'subtrair': resultoperacao = n1 - n2; break;
+                case 'multiplicar': resultoperacao = n1 * n2; break;
+                case 'dividir': resultoperacao = n1 / n2; break;
+                case 'raizquadrada': resultoperacao = Math.sqrt(n1); break;
+                case 'potencia': resultoperacao = Math.pow(n1,n2); break;
+                case 'raizcubica': resultoperacao = Math.cbrt(n1); break;
+                case 'exponencial': resultoperacao = Math.exp(n1); break;
+                case 'logaritmo': resultoperacao = Math.log(n1); break;
+                default: resultoperacao = 'Inválido'; break;
+            }
             var resultado = document.getElementById('resultado');
-            resultado.value = n1 + n2;
-            }
-
-            function subtrair() {
-            var n1 = +document.getElementById('primeiroNumero').value;
-            var n2 = +document.getElementById('segundoNumero').value;
-            var resultado = document.getElementById('resultado');
-            resultado.value = n1 - n2;
-            }
-
-            function multiplicar() {
-            var n1 = document.getElementById('primeiroNumero').value;
-            var n2 = document.getElementById('segundoNumero').value;
-            var resultado = document.getElementById('resultado');
-            resultado.value = n1 * n2;
-            }
-
-            function dividir() {
-            var n1 = +document.getElementById('primeiroNumero').value;
-            var n2 = +document.getElementById('segundoNumero').value;
-            var resultado = document.getElementById('resultado');
-            resultado.value = n1 / n2;
-            }
-
-            function raizquadrada() {
-                var n1 = +document.getElementById('primeiroNumero').value;
-                var resultado = document.getElementById('resultado');
-                resultado.value = Math.sqrt(n1);
-            }
-
-            function potencia() {
-                var n1 = +document.getElementById('primeiroNumero').value;
-                var n2 = +document.getElementById('segundoNumero').value;
-                var resultado = document.getElementById('resultado');
-                resultado.value = Math.pow(n1,n2);
-            }
-
-            function raizcubica() {
-                var n1 = +document.getElementById('primeiroNumero').value;
-                var resultado = document.getElementById('resultado');
-                resultado.value = Math.cbrt(n1);
-            }
-
-            function exponencial() {
-                var n1 = +document.getElementById('primeiroNumero').value;
-                var resultado = document.getElementById('resultado');
-                resultado.value = Math.exp(n1);
-            }
-
-            function logaritmo() {
-                var n1 = +document.getElementById('primeiroNumero').value;
-                var resultado = document.getElementById('resultado');
-                resultado.value = Math.log(n1);
-            }
+            resultado.value = resultoperacao;
+        }
     </script>
 </body>
 </html>
