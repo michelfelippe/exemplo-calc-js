@@ -16,7 +16,7 @@
             <label for="segundoNumero">Segundo Número</label>
             <input type="number" id="segundoNumero">
         </div>
-        <div>
+       <!-- <div>
             <button onclick="execoperacao('somar')">Somar</button>
             <button onclick="execoperacao('subtrair')">Subtrair</button>
             <button onclick="execoperacao('multiplicar')">Multiplicar</button>
@@ -26,7 +26,22 @@
             <button onclick="execoperacao('raizcubica')">Raiz Cubica</button>
             <button onclick="execoperacao('exponencial')">Exponencial</button>
             <button onclick="execoperacao('logaritmo')">Logaritmo</button>
-        </div>
+        </div>-->
+
+        <select name="selecao" id="selecao">
+            <option value="somar">Somar</option>
+            <option value="subtrair">Subtrair</option>
+            <option value="multiplicar">Multiplicar</option>
+            <option value="dividir">Dividir</option>
+            <option value="raizquadrada">Raiz Quadrada</option>
+            <option value="potencia">Potenciação</option>
+            <option value="raizcubica">Raiz Cúbica</option>
+            <option value="exponencial">Exponencial</option>
+            <option value="logaritmo">Logaritmo</option>
+         </select>
+
+         <input type="button" value="calcular" onclick="execoperacao()">
+
         <div>
             <label for="resultado">Resultado</label>
             <input type="number" id="resultado">
@@ -34,12 +49,14 @@
     </fieldset>
     <script>
 
-        function execoperacao(operacao){
+        function execoperacao(operacao) {
             var n1 = +document.getElementById('primeiroNumero').value;
             var n2 = +document.getElementById('segundoNumero').value;
 
+            var calc = document.getElementById('selecao').value;
+
             var resultoperacao;
-            switch (operacao) {
+            switch (calc) {
                 case 'somar': resultoperacao = n1 + n2; break;
                 case 'subtrair': resultoperacao = n1 - n2; break;
                 case 'multiplicar': resultoperacao = n1 * n2; break;
